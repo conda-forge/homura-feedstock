@@ -5,20 +5,18 @@ package:
   version: {{ version }}
 
 source:
-  fn: homura-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/h/homura/homura-{{ version }}.tar.gz
   md5: c54957da25a5a0c61a16cfa87a016c38
 
 build:
-  noarch: python
   number: 1
-  script: python -m pip install --no-deps --ignore-installed .
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   host:
-    - pip
     - python
-    - setuptools
+    - pip
   run:
     - python
     - certifi
@@ -28,7 +26,7 @@ requirements:
 
 about:
   home: https://github.com/shichao-an/homura
-  license: BSD 2-Clause
+  license: BSD-2-Clause
   license_file: LICENSE
   summary: 'Python downloader with progress'
 
